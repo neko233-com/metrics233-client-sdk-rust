@@ -1,0 +1,21 @@
+[package]
+name = "metrics233-client-sdk-rust"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.88"
+description = "Explicit-lifecycle Rust client SDK for metrics233-server"
+license = "MIT"
+repository = "https://github.com/neko233-com/metrics233-client-sdk-rust"
+readme = "README.md"
+keywords = ["metrics", "monitoring", "telemetry"]
+categories = ["api-bindings", "development-tools::profiling"]
+include = ["src/**", "examples/**", "tests/**", "README.md", "LICENSE", "Cargo.toml", "Cargo.lock"]
+
+[features]
+real-server-tests = []
+
+[dependencies]
+metrics233 = "=0.1.0"
+
+[dev-dependencies]
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "io-util"] }
