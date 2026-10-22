@@ -3,7 +3,7 @@
 Rust 客户端 SDK 的统一命名入口，固定复用已发布的 `metrics233 = 0.1.0`。它与原服务端 Rust SDK 使用同一实现，没有重复的队列、重试、HTTP 或 TLS 栈。需要 Rust 1.88+ 和 Tokio。
 
 ```sh
-cargo add metrics233-client-sdk-rust --git https://github.com/neko233-com/metrics233-client-sdk-rust.git --tag v0.1.0
+cargo add metrics233-client-sdk-rust@0.1.0
 cargo add tokio --features rt-multi-thread,macros
 ```
 
@@ -34,4 +34,6 @@ flowchart LR
 
 只使用专用 ingest Token，不能查询或修改监控后台。TLS 正常验证证书，拒绝重定向；本机 HTTP 仅在显式 `allow_http_loopback()` 后开放。公开游戏客户端通过业务后端中转，不分发永久管理凭据或服务端上报 Token。不要把玩家 ID、完整 IP 或请求 ID 当作高基数标签。
 
-完整协议、容量、取消和交付语义见[原 SDK 合同](https://github.com/neko233-com/metrics-lib-rust#lifecycle-and-delivery)。`cargo test --all-targets` 和 `cargo test --doc` 验证本包，`cargo package` 验证可分发产物。原 `metrics233` 包已经可从 crates.io 安装。统一命名包的 GitHub v0.1.0 与安装包已发布，Rust 1.88 和全新 Cargo 缓存的 Git 消费者、真实服务接收和错误 Token 拒绝已验证；新包的 crates.io 上传仍被现有发布凭据拒绝（403），因此目前使用上面的固定 Git 安装命令。
+完整协议、容量、取消和交付语义见[原 SDK 合同](https://github.com/neko233-com/metrics-lib-rust#lifecycle-and-delivery)。`cargo test --all-targets` 和 `cargo test --doc` 验证本包，`cargo package` 验证可分发产物。原 `metrics233` 和本包 `metrics233-client-sdk-rust` 的 0.1.0 均已正式发布到 crates.io。
+
+本包的 [crates.io 页面](https://crates.io/crates/metrics233-client-sdk-rust/0.1.0)和 [GitHub v0.1.0 发行包](https://github.com/neko233-com/metrics233-client-sdk-rust/releases/tag/v0.1.0)使用同一份已验证产物，SHA-256 为 `209401a867d0a0787e76eb36f6f481c96e24a43505743b45592ebf410b99eb2a`。Rust 1.88 单元、文档、Clippy、打包及真实服务器 Token 鉴权已有独立验证；构造和生命周期合同保持不变。
